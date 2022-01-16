@@ -3,8 +3,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import Data
 
-# get all the_Models
-
 
 @api_view(['GET'])
 def getUuid(request):
@@ -14,5 +12,5 @@ def getUuid(request):
     data = Data.objects.order_by('-time_stamp')
     response = {}
     for item in data:
-        response[str(item.id)] = item.time_stamp
+        response[str(item.time_stamp)] = item.id
     return Response(response, status=200)
